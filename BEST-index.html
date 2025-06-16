@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>COLIZEUM</title>
+  <style>
+    body {
+      background-color: black;
+      color: yellow;
+      font-size: 3em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      margin: 0;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="quest">Загрузка...</div>
+  <script>
+    const quests = [
+      "Выйграй 2 картки подряд в Dota 2 - 1 час в подарок",
+      "Сделай 2 эйса в CS подряд — 1 час в подарок",
+      "Играй 5 часов подряд — получи - 1 час сверху",
+      "Займи топ-1 в Warzone/PUBG — +2 часа",
+      "Набери 20 убийств в Fortnite в одном матче — 500 бонусов"
+    ];
+
+  const dayIndex = new Date().getDate() % questSets.length;
+    const todayQuests = questSets[dayIndex];
+
+    const container = document.getElementById("quests");
+    todayQuests.forEach(q => {
+      const el = document.createElement("div");
+      el.className = "quest";
+      el.textContent = q;
+      container.appendChild(el);
+    });
+  </script>
+</body>
+</html>
