@@ -1,43 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Квесты</title>
+  <title>Квесты ПК-Клуба</title>
   <style>
     body {
-      background-color: black;
-      color: yellow;
-      font-size: 3em;
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 0);
+      font-family: sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      text-align: center;
       margin: 0;
-      font-family: sans-serif;
+      font-size: 2.5em;
+      text-align: center;
+    }
+    .quest {
+      margin: 20px 0;
     }
   </style>
 </head>
 <body>
-  <div id="quest">Загрузка...</div>
+  <div id="quests"></div>
+
   <script>
-    const quests = [
-      "Сделай эйс в CS и получи 2 часа бесплатно",
-      "Победи друга 3 раза подряд — получи пепси",
-      "Играй 5 часов подряд — получи промокод",
-      "Сделай фраг-мув — получи 1 час бонусом",
-      "Приведи друга — получите по часу вдвоем"
+    const questSets = [
+      [
+        "Выйграй 2 картки подряд в Dota 2 - 1 час в подарок",
+        "Сделай 2 эйса в CS подряд — 1 час в подарок",
+        "Играй 5 часов подряд — получи +1 час сверху",
+        "Займи топ-1 в Warzone/PUBG — +2 часа",
+        "Набери 20 убийств в Fortnite в одном матче — 500 бонусов"
+      ],
+      [
+        "Сыграй 10 матчей за день — получи 2 часа",
+        "Получай MVP в 3 катках подряд — 500 бонусов",
+        "Сделай ножевой килл — 1 час в подарок",
+        "Приведи сквад,пополнитесь на 3 часа - сверху 1 час каждому",
+        "Победи в 5 матчах подряд — +2 часа"
+      ],
+      [
+        "Приведи друга, который играет 2 часа — получи +1 час",
+        "Сделай 3 хэдшота подряд — 500 бонусов",
+        "Проведи день без поражений — +2 часа",
+        "Сыграй на новой карте — 1 час в подарок",
+        "Играй 4+ часов без перерыва — +500 бонусов"
+      ]
     ];
 
-    function showRandomQuest() {
-      const questDiv = document.getElementById("quest");
-      const quest = quests[Math.floor(Math.random() * quests.length)];
-      questDiv.textContent = quest;
-    }
+    const dayIndex = new Date().getDate() % questSets.length;
+    const todayQuests = questSets[dayIndex];
 
-    showRandomQuest();
-    setInterval(showRandomQuest, 1000 * 60 * 2); // каждые 2 минуты
+    const container = document.getElementById("quests");
+    todayQuests.forEach(q => {
+      const el = document.createElement("div");
+      el.className = "quest";
+      el.textContent = q;
+      container.appendChild(el);
+    });
   </script>
 </body>
 </html>
-	
